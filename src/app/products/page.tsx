@@ -4,30 +4,16 @@ import ShowProducts from '@/components/ShowProducts';
 import { useEffect } from 'react';
 
 const ProductsPage = () => {
-  if (typeof window === 'undefined') {
-    const tokenIsValid = localStorage.getItem('token');
+  const tokenIsValid = localStorage.getItem('token');
 
-    useEffect(() => {
-      if (!tokenIsValid) {
-        window.location.replace('/');
-      }
-    }, [tokenIsValid]);
-
+  useEffect(() => {
     if (!tokenIsValid) {
-      return <div>Carregando...</div>;
+      window.location.replace('/');
     }
-  } else {
-    const tokenIsValid = localStorage.getItem('token');
+  }, [tokenIsValid]);
 
-    useEffect(() => {
-      if (!tokenIsValid) {
-        window.location.replace('/');
-      }
-    }, [tokenIsValid]);
-
-    if (!tokenIsValid) {
-      return <div>Carregando...</div>;
-    }
+  if (!tokenIsValid) {
+    return <div>Carregando...</div>;
   }
 
   return (
