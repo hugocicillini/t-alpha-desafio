@@ -4,7 +4,7 @@ import ShowProducts from '@/components/ShowProducts';
 import { useEffect } from 'react';
 
 const ProductsPage = () => {
-  const tokenIsValid = localStorage.getItem('token');
+  const tokenIsValid = window?.localStorage?.getItem('token') ? JSON.parse(localStorage.getItem('token')!) : null;
 
   useEffect(() => {
     if (!tokenIsValid) {
